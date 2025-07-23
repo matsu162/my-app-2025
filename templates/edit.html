@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記録を編集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>記録を編集</h1>
+    <form method="POST">
+        <label for="date">日付:</label>
+        <input type="date" id="date" name="date" value="{{ record.date }}" required><br>
+
+        <label for="amount">金額:</label>
+        <input type="number" id="amount" name="amount" value="{{ record.amount }}" required><br>
+
+        <label for="description">内容:</label>
+        <input type="text" id="description" name="description" value="{{ record.description or '' }}"><br>
+
+        <label for="category">カテゴリ:</label>
+        <select id="category" name="category">
+            <option value="食費" {% if record.category == '食費' %}selected{% endif %}>食費</option>
+            <option value="交通費" {% if record.category == '交通費' %}selected{% endif %}>交通費</option>
+            <option value="娯楽" {% if record.category == '娯楽' %}selected{% endif %}>娯楽</option>
+            <option value="給料" {% if record.category == '給料' %}selected{% endif %}>給料</option>
+            <option value="その他" {% if record.category == 'その他' %}selected{% endif %}>その他</option>
+        </select><br>
+
+        <label for="type">種別:</label>
+        <select id="type" name="type">
+            <option value="支出" {% if record.type == '支出' %}selected{% endif %}>支出</option>
+            <option value="収入" {% if record.type == '収入' %}selected{% endif %}>収入</option>
+        </select><br>
+
+        <button type="submit">更新</button>
+    </form>
+    <p><a href="/">キャンセルして戻る</a></p>
+</body>
+</html>

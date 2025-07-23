@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>カテゴリ別支出グラフ</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px 0; border: 1px solid #eee; }
+        a { text-decoration: none; color: #007bff; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>カテゴリ別支出グラフ</h1>
+    {% if graph %}
+        <img src="data:image/png;base64,{{ graph }}" alt="カテゴリ別支出グラフ">
+    {% else %}
+        <p>表示する支出データがありません。</p>
+    {% endif %}
+    <p><a href="/">戻る</a></p>
+</body>
+</html>

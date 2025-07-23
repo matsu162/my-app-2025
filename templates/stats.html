@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>月ごとの統計</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { display: block; margin-top: 20px; text-decoration: none; color: #007bff; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>月ごとの統計</h1>
+    <table border="1">
+        <tr>
+            <th>年月</th>
+            <th>支出合計</th>
+            <th>収入合計</th>
+            <th>支出平均</th>
+            <th>収入平均</th>
+        </tr>
+        {% for stat in stats %}
+        <tr>
+            <td>{{ stat.year_month }}</td>
+            <td>{{ stat.total_expense }}</td>
+            <td>{{ stat.total_income }}</td>
+            <td>{{ stat.avg_expense }}</td>
+            <td>{{ stat.avg_income }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">戻る</a>
+</body>
+</html>
